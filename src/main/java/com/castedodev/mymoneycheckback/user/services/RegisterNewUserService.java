@@ -3,7 +3,7 @@ package com.castedodev.mymoneycheckback.user.services;
 import com.castedodev.mymoneycheckback.user.application.ports.out.FindUserByEmailPort;
 import com.castedodev.mymoneycheckback.user.application.ports.out.FindUserByUsernamePort;
 import com.castedodev.mymoneycheckback.user.application.ports.out.SaveUserPort;
-import com.castedodev.mymoneycheckback.user.domain.User;
+import com.castedodev.mymoneycheckback.user.domain.Usuario;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,16 +19,16 @@ public class RegisterNewUserService {
         this.findUserByUsernamePort = findUserByUsernamePort;
     }
 
-    public void invoke(User user){
+    public void invoke(Usuario usuario){
 
-        if(findUserByUsernamePort.findByUsername(user.getUsername()).isPresent()){
+        if(findUserByUsernamePort.findByUsername(usuario.getUsername()).isPresent()){
             System.out.println("ERROR username");
         }
 
-        if(findUserByEmailPort.findByEmail(user.getEmail()).isPresent()){
+        if(findUserByEmailPort.findByEmail(usuario.getEmail()).isPresent()){
             System.out.println("ERROR email");
         }
 
-        savePort.save(user);
+        savePort.save(usuario);
     }
 }

@@ -1,13 +1,13 @@
-package com.castedodev.mymoneycheckback.user.adapters.in.api;
+package com.castedodev.mymoneycheckback.user.adapters.in.api.models;
 
-public class RegisterNewUserDTO {
+public class NewUserRequest {
 
     private final String id;
     private final String username;
     private final String email;
     private final String password;
 
-    public RegisterNewUserDTO(String id, String username, String email, String password) {
+    public NewUserRequest(String id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;

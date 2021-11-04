@@ -3,7 +3,7 @@ package com.castedodev.mymoneycheckback.user.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class Usuario {
 
     private final String id;
     private final String username;
@@ -11,7 +11,7 @@ public class User {
     private final String password;
     private final List<String> roles;
 
-    public User(String id, String username, String email, String password, List<String> roles) {
+    public Usuario(String id, String username, String email, String password, List<String> roles) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -19,7 +19,7 @@ public class User {
         this.roles = roles;
     }
 
-    public User(String id, String username, String email, String password){
+    public Usuario(String id, String username, String email, String password){
         this.id = id;
         this.username = username;
         this.email = email;

@@ -1,17 +1,17 @@
-package com.castedodev.mymoneycheckback.model;
+package com.castedodev.mymoneycheckback.user.adapters.in.api.models;
 
 import java.io.Serializable;
 
-public class JwtRequest implements Serializable {
+public class LoginUserRequest implements Serializable {
 
 	private static final long serialVersionUID = 5926468583005150707L;
 	
 	private String username;
 	private String password;
 
-	public JwtRequest() {}
+	public LoginUserRequest() {}
 
-	public JwtRequest(String username, String password) {
+	public LoginUserRequest(String username, String password) {
 		this.setUsername(username);
 		this.setPassword(password);
 	}

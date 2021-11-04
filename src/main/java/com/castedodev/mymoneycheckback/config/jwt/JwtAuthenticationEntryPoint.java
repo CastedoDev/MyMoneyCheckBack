@@ -1,4 +1,4 @@
-package com.castedodev.mymoneycheckback.config;
+package com.castedodev.mymoneycheckback.config.jwt;
 
 import java.io.IOException;
 import java.io.Serializable;

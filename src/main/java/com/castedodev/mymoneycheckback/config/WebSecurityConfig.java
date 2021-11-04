@@ -1,5 +1,7 @@
 package com.castedodev.mymoneycheckback.config;
 
+import com.castedodev.mymoneycheckback.config.jwt.JwtAuthenticationEntryPoint;
+import com.castedodev.mymoneycheckback.config.jwt.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,8 +56,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// We don't need CSRF for this example
 		httpSecurity.csrf().disable()
 				// dont authenticate this particular request
-				.authorizeRequests().antMatchers("/authenticate").permitAll().antMatchers(HttpMethod.OPTIONS, "/**")
-				.permitAll().
+				.authorizeRequests()
+					.antMatchers("/v1/user/login").permitAll()
+					.antMatchers("/v1/user/register").permitAll()
+					.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().
 				// all other requests need to be authenticated
 						anyRequest().authenticated().and().
 				// make sure we use stateless session; session won't be used to
