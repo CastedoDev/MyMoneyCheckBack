@@ -2,7 +2,7 @@ package com.castedodev.mymoneycheckback.user.adapters.in.api;
 
 import com.castedodev.mymoneycheckback.user.adapters.in.api.models.NewUserRequest;
 import com.castedodev.mymoneycheckback.user.domain.Usuario;
-import com.castedodev.mymoneycheckback.user.services.RegisterNewUserService;
+import com.castedodev.mymoneycheckback.user.application.services.RegisterNewUserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;

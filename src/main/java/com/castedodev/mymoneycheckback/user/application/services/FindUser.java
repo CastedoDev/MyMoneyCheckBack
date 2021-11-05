@@ -1,9 +1,8 @@
-package com.castedodev.mymoneycheckback.user.services;
+package com.castedodev.mymoneycheckback.user.application.services;
 
 import com.castedodev.mymoneycheckback.user.application.ports.out.FindUserByEmailPort;
 import com.castedodev.mymoneycheckback.user.application.ports.out.FindUserByUsernamePort;
 import com.castedodev.mymoneycheckback.user.domain.User;
-import com.sun.security.auth.UserPrincipal;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

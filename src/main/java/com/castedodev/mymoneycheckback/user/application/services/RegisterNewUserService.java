@@ -1,4 +1,4 @@
-package com.castedodev.mymoneycheckback.user.services;
+package com.castedodev.mymoneycheckback.user.application.services;
 
 import com.castedodev.mymoneycheckback.user.application.ports.out.FindUserByEmailPort;
 import com.castedodev.mymoneycheckback.user.application.ports.out.FindUserByUsernamePort;
