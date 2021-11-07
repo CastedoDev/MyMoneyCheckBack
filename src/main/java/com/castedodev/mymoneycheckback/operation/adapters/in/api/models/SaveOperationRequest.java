@@ -1,21 +1,21 @@
-package com.castedodev.mymoneycheckback.item.domain;
+package com.castedodev.mymoneycheckback.operation.adapters.in.api.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-public class Record {
+public class SaveOperationRequest {
 
     private final String id;
     private final String name;
     private final String description;
     private final Float amount;
-    private final LocalDateTime dateTime;
+    private final LocalDate date;
 
-    public Record(String id, String name, String description, Float amount, LocalDateTime dateTime) {
+    public SaveOperationRequest(String id, String name, String description, Float amount, LocalDate date) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.amount = amount;
-        this.dateTime = dateTime;
+        this.date = date;
     }
 
     public String getId() {
@@ -34,7 +34,8 @@ public class Record {
         return amount;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDate getDate() {
+        return date;
     }
+
 }
