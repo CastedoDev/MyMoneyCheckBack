@@ -4,6 +4,6 @@ import com.castedodev.mymoneycheckback.operation.domain.Operation;
 
 public interface SaveOperationPort {
 
-    void save(Operation operation);
+    void save(Operation operation, String userId);
 
 }

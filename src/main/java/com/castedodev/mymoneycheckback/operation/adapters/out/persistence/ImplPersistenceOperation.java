@@ -1,16 +1,13 @@
 package com.castedodev.mymoneycheckback.operation.adapters.out.persistence;
 
-import com.castedodev.mymoneycheckback.operation.application.ports.out.DeleteOperationPort;
-import com.castedodev.mymoneycheckback.operation.application.ports.out.FindByIdOperationPort;
-import com.castedodev.mymoneycheckback.operation.application.ports.out.SaveOperationPort;
-import com.castedodev.mymoneycheckback.operation.application.ports.out.UpdateOperationPort;
+import com.castedodev.mymoneycheckback.operation.application.ports.out.*;
 import com.castedodev.mymoneycheckback.operation.domain.Operation;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
-public class ImplPersistenceOperation implements SaveOperationPort, DeleteOperationPort, FindByIdOperationPort, UpdateOperationPort {
+public class ImplPersistenceOperation implements SaveOperationPort, DeleteOperationPort, FindByIdOperationPort, CheckIfExistByIdPort {
 
     private final OperationRepository repository;
 
@@ -19,8 +16,14 @@ public class ImplPersistenceOperation implements SaveOperationPort, DeleteOperat
     }
 
     @Override
-    public void save(Operation operation) {
-        OperationEntity operationEntity = new OperationEntity(operation.getId(), operation.getName(), operation.getDescription(), operation.getAmount(), operation.getDate());
+    public void save(Operation operation, String userId) {
+        OperationEntity operationEntity = new OperationEntity(
+                operation.getId(),
+                operation.getName(),
+                operation.getDescription(),
+                operation.getAmount(),
+                operation.getDate(),
+                userId);
         repository.save(operationEntity);
     }
 
@@ -40,12 +43,9 @@ public class ImplPersistenceOperation implements SaveOperationPort, DeleteOperat
         return Optional.empty();
     }
 
-
     @Override
-    public void update(Operation operation) {
-        Optional<OperationEntity> optOperationEntity = repository.findById(operation.getId());
-        if(optOperationEntity.isPresent()){
-
-        }
+    public Boolean checkIfExistsById(String id) {
+        return repository.existsById(id);
     }
+
 }

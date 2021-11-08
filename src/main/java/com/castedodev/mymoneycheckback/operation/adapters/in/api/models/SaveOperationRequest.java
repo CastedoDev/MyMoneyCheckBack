@@ -1,5 +1,7 @@
 package com.castedodev.mymoneycheckback.operation.adapters.in.api.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 
 public class SaveOperationRequest {
@@ -8,6 +10,8 @@ public class SaveOperationRequest {
     private final String name;
     private final String description;
     private final Float amount;
+
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private final LocalDate date;
 
     public SaveOperationRequest(String id, String name, String description, Float amount, LocalDate date) {

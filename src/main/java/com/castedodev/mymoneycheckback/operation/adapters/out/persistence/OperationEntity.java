@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
-@Table
+@Table(name = "operations")
 @Entity
 public class OperationEntity {
 
@@ -16,17 +16,19 @@ public class OperationEntity {
     private Float amount;
     private LocalDate date;
 
+    private String userId;
+
     public OperationEntity() {
     }
 
-    public OperationEntity(String id, String name, String description, Float amount, LocalDate date) {
+    public OperationEntity(String id, String name, String description, Float amount, LocalDate date, String userId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.amount = amount;
         this.date = date;
+        this.userId = userId;
     }
-
 
     public String getId() {
         return id;
@@ -47,4 +49,6 @@ public class OperationEntity {
     public LocalDate getDate() {
         return date;
     }
+
+    public String getUserId() {return userId;}
 }
