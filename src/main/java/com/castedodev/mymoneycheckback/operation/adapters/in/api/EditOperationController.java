@@ -1,5 +1,6 @@
 package com.castedodev.mymoneycheckback.operation.adapters.in.api;
 
+import com.castedodev.mymoneycheckback.config.jwt.JwtTokenUtil;
 import com.castedodev.mymoneycheckback.operation.adapters.in.api.models.SaveOperationRequest;
 import com.castedodev.mymoneycheckback.operation.application.services.EditOperationService;
 import com.castedodev.mymoneycheckback.operation.domain.Operation;
@@ -12,15 +13,18 @@ import org.springframework.web.bind.annotation.*;
 public class EditOperationController {
 
     private final EditOperationService editOperationService;
+    private final JwtTokenUtil jwtTokenUtil;
 
-    public EditOperationController(EditOperationService editOperationService) {
+    public EditOperationController(EditOperationService editOperationService, JwtTokenUtil jwtTokenUtil) {
         this.editOperationService = editOperationService;
+        this.jwtTokenUtil = jwtTokenUtil;
     }
 
     @PutMapping
-    public ResponseEntity<?> invoke(@RequestBody SaveOperationRequest request) throws Exception {
+    public ResponseEntity<?> invoke(@RequestHeader("Authorization") String token, @RequestBody SaveOperationRequest request) throws Exception {
+        String username = jwtTokenUtil.getUsernameFromToken(token);
         Operation operation = new Operation(request.getId(), request.getName(), request.getDescription(), request.getAmount(), request.getDate());
-        //editOperationService.invoke(operation);
+        editOperationService.invoke(operation, username);
         return ResponseEntity.accepted().build();
     }
 
