@@ -20,8 +20,8 @@ public class EditTagController {
         this.service = service;
     }
 
-    @PostMapping
-    public ResponseEntity<?> invoke(@RequestHeader("Authorization") String token, @RequestBody Tag tagRequest) throws NotUserFound {
+    @PutMapping
+    public ResponseEntity<?> call(@RequestHeader("Authorization") String token, @RequestBody Tag tagRequest) throws NotUserFound {
         String username = jwtTokenUtil.getUsernameFromToken(token);
         service.invoke(tagRequest, username);
         return ResponseEntity.accepted().build();

@@ -15,7 +15,6 @@ public class OperationEntity {
     private String description;
     private Float amount;
     private LocalDate date;
-
     private String userId;
 
     public OperationEntity() {
