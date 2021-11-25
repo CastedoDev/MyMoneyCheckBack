@@ -6,22 +6,22 @@ public class LoginUserRequest implements Serializable {
 
 	private static final long serialVersionUID = 5926468583005150707L;
 	
-	private String username;
+	private String identifier;
 	private String password;
 
 	public LoginUserRequest() {}
 
-	public LoginUserRequest(String username, String password) {
-		this.setUsername(username);
+	public LoginUserRequest(String identifier, String password) {
+		this.setIdentifier(identifier);
 		this.setPassword(password);
 	}
 
-	public String getUsername() {
-		return this.username;
+	public String getIdentifier() {
+		return this.identifier;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
 	}
 
 	public String getPassword() {

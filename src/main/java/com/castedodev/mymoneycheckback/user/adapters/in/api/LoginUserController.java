@@ -33,10 +33,10 @@ public class LoginUserController {
 	public ResponseEntity<?> invoke(@RequestBody LoginUserRequest loginUserRequest)
 			throws Exception {
 
-		authenticate(loginUserRequest.getUsername(), loginUserRequest.getPassword());
+		authenticate(loginUserRequest.getIdentifier(), loginUserRequest.getPassword());
 
 		final UserDetails userDetails = jwtInMemoryUserDetailsService
-				.loadUserByUsername(loginUserRequest.getUsername());
+				.loadUserByUsername(loginUserRequest.getIdentifier());
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 

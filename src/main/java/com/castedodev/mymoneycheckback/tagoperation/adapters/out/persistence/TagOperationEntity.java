@@ -1,16 +1,13 @@
 package com.castedodev.mymoneycheckback.tagoperation.adapters.out.persistence;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "TAG_OPERATION")
 @Entity
 public class TagOperationEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     private String tagId;

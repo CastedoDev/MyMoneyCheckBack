@@ -25,7 +25,7 @@ public class SaveOperationController {
     public ResponseEntity<?> invoke(@RequestHeader("Authorization") String token, @RequestBody SaveOperationRequest request) throws NotUserFound {
         String username = jwtTokenUtil.getUsernameFromToken(token);
         Operation operation = new Operation(request.getId(), request.getName(), request.getDescription(), request.getAmount(), request.getDate());
-        saveOperationService.invoke(operation, username);
+        saveOperationService.invoke(operation, request.getTagsId(), username);
         return ResponseEntity.accepted().build();
     }
 
