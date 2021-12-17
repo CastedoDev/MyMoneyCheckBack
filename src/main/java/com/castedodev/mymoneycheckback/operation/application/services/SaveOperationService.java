@@ -23,9 +23,9 @@ public class SaveOperationService {
         this.findUserService = findUserService;
     }
 
-    public void invoke(Operation operation, List<String> tagsId, String username) throws NotUserFound {
+    public void invoke(Operation operation, List<String> tagsId, String accountId, String username) throws NotUserFound {
         String userId = findUserService.findByUsername(username).getId();
-        saveOperationPort.save(operation, userId);
+        saveOperationPort.save(operation, accountId, userId);
 
         tagsId.stream()
                 .map(tagTd -> new TagOperation(tagTd, operation.getId()))

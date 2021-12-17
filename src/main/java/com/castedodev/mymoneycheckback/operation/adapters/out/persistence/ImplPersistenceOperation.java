@@ -16,13 +16,14 @@ public class ImplPersistenceOperation implements SaveOperationPort, DeleteOperat
     }
 
     @Override
-    public void save(Operation operation, String userId) {
+    public void save(Operation operation, String accountId, String userId) {
         OperationEntity operationEntity = new OperationEntity(
                 operation.getId(),
                 operation.getName(),
                 operation.getDescription(),
                 operation.getAmount(),
                 operation.getDate(),
+                accountId,
                 userId);
         repository.save(operationEntity);
     }

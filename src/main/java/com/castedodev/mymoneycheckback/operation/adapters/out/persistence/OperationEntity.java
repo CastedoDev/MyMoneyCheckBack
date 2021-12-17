@@ -15,17 +15,20 @@ public class OperationEntity {
     private String description;
     private Float amount;
     private LocalDate date;
+
+    private String accountId;
     private String userId;
 
     public OperationEntity() {
     }
 
-    public OperationEntity(String id, String name, String description, Float amount, LocalDate date, String userId) {
+    public OperationEntity(String id, String name, String description, Float amount, LocalDate date, String accountId, String userId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.amount = amount;
         this.date = date;
+        this.accountId = accountId;
         this.userId = userId;
     }
 
