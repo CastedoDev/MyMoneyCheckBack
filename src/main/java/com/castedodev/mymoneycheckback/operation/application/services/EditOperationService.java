@@ -19,10 +19,10 @@ public class EditOperationService {
         this.findUserService = findUserService;
     }
 
-    public void invoke(Operation operation, String username) throws Exception {
+    public void invoke(Operation operation, String accountId, String username) throws Exception {
         String userId = findUserService.findByUsername(username).getId();
         if(checkIfExistsByIdPort.checkIfExistsById(operation.getId())){
-            saveOperationPort.save(operation, userId);
+            saveOperationPort.save(operation, accountId, userId);
         } else {
             throw new Exception();
         }

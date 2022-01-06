@@ -24,7 +24,7 @@ public class EditOperationController {
     public ResponseEntity<?> invoke(@RequestHeader("Authorization") String token, @RequestBody SaveOperationRequest request) throws Exception {
         String username = jwtTokenUtil.getUsernameFromToken(token);
         Operation operation = new Operation(request.getId(), request.getName(), request.getDescription(), request.getAmount(), request.getDate());
-        editOperationService.invoke(operation, username);
+        editOperationService.invoke(operation, request.getAccountId(), username);
         return ResponseEntity.accepted().build();
     }
 

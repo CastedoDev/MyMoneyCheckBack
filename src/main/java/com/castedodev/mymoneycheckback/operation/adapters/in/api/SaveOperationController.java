@@ -8,6 +8,8 @@ import com.castedodev.mymoneycheckback.user.domain.NotUserFound;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+
 @CrossOrigin
 @RestController
 @RequestMapping({ "/v1/operation" })
@@ -25,7 +27,7 @@ public class SaveOperationController {
     public ResponseEntity<?> invoke(@RequestHeader("Authorization") String token, @RequestBody SaveOperationRequest request) throws NotUserFound {
         String username = jwtTokenUtil.getUsernameFromToken(token);
         Operation operation = new Operation(request.getId(), request.getName(), request.getDescription(), request.getAmount(), request.getDate());
-        saveOperationService.invoke(operation, request.getTagsId(), username);
+        saveOperationService.invoke(operation, request.getTagsId(), request.getAccountId(), username);
         return ResponseEntity.accepted().build();
     }
 

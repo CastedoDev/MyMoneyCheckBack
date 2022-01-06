@@ -12,18 +12,19 @@ public class SaveOperationRequest {
     private final String description;
     private final Float amount;
 
-    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private final LocalDate date;
 
     private final List<String> tagsId;
+    private final String accountId;
 
-    public SaveOperationRequest(String id, String name, String description, Float amount, LocalDate date, List<String> tagsId) {
+    public SaveOperationRequest(String id, String name, String description, Float amount, LocalDate date, List<String> tagsId, String accountId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.amount = amount;
         this.date = date;
         this.tagsId = tagsId;
+        this.accountId = accountId;
     }
 
     public String getId() {
@@ -49,4 +50,6 @@ public class SaveOperationRequest {
     public List<String> getTagsId() {
         return tagsId;
     }
+
+    public String getAccountId() { return accountId; }
 }

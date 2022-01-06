@@ -4,10 +4,12 @@ import com.castedodev.mymoneycheckback.operation.application.ports.out.*;
 import com.castedodev.mymoneycheckback.operation.domain.Operation;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
-public class ImplPersistenceOperation implements SaveOperationPort, DeleteOperationPort, FindByIdOperationPort, CheckIfExistByIdPort {
+public class ImplPersistenceOperation implements SaveOperationPort, DeleteOperationPort, FindByIdOperationPort, CheckIfExistByIdPort, FindByDaysPort {
 
     private final OperationRepository repository;
 
@@ -49,4 +51,10 @@ public class ImplPersistenceOperation implements SaveOperationPort, DeleteOperat
         return repository.existsById(id);
     }
 
+    @Override
+    public List<Operation> findByDays(Integer days, String userId) {
+        return repository.findAll().stream()
+                .map(tagEntity -> new Operation(tagEntity.getId(), tagEntity.getName(), tagEntity.getDescription(), tagEntity.getAmount(), tagEntity.getDate()))
+                .collect(Collectors.toList());
+    }
 }

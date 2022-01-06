@@ -2,12 +2,11 @@ package com.castedodev.mymoneycheckback.user.adapters.out.persistence;
 
 import javax.persistence.*;
 
-@Table(name = "USERS")
+@Table(name = "users")
 @Entity
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String username;
     private String email;
