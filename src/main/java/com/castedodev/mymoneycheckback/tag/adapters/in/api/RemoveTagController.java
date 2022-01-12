@@ -1,7 +1,6 @@
 package com.castedodev.mymoneycheckback.tag.adapters.in.api;
 
-import com.castedodev.mymoneycheckback.tag.application.service.RemoveTagService;
-import com.castedodev.mymoneycheckback.user.domain.NotUserFound;
+import com.castedodev.mymoneycheckback.tag.application.RemoveTagService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

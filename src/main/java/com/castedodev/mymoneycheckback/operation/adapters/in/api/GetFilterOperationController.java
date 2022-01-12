@@ -1,8 +1,7 @@
 package com.castedodev.mymoneycheckback.operation.adapters.in.api;
 
 import com.castedodev.mymoneycheckback.config.jwt.JwtTokenUtil;
-import com.castedodev.mymoneycheckback.operation.adapters.in.api.models.FilterOperationCriteria;
-import com.castedodev.mymoneycheckback.operation.application.services.FindFilterOperationsService;
+import com.castedodev.mymoneycheckback.operation.application.FindFilterOperationsService;
 import com.castedodev.mymoneycheckback.operation.domain.Operation;
 import com.castedodev.mymoneycheckback.operation.domain.OperationCriteria;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +25,7 @@ public class GetFilterOperationController {
     @GetMapping
     public ResponseEntity<?> invoke(@RequestHeader("Authorization") String token, @RequestBody OperationCriteria criteria) throws Exception {
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        List<Operation> operations = service.invoke(criteria);
+        List<Operation> operations = service.invoke(criteria, username);
         return ResponseEntity.ok(operations);
     }
 

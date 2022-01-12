@@ -2,13 +2,11 @@ package com.castedodev.mymoneycheckback.operation.adapters.in.api;
 
 import com.castedodev.mymoneycheckback.config.jwt.JwtTokenUtil;
 import com.castedodev.mymoneycheckback.operation.adapters.in.api.models.SaveOperationRequest;
-import com.castedodev.mymoneycheckback.operation.application.services.SaveOperationService;
+import com.castedodev.mymoneycheckback.operation.application.SaveOperationService;
 import com.castedodev.mymoneycheckback.operation.domain.Operation;
 import com.castedodev.mymoneycheckback.user.domain.NotUserFound;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Arrays;
 
 @CrossOrigin
 @RestController

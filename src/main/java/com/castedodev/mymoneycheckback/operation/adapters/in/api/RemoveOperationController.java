@@ -1,6 +1,6 @@
 package com.castedodev.mymoneycheckback.operation.adapters.in.api;
 
-import com.castedodev.mymoneycheckback.operation.application.services.DeleteOperationService;
+import com.castedodev.mymoneycheckback.operation.application.DeleteOperationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

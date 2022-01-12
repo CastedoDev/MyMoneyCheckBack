@@ -1,14 +1,26 @@
 package com.castedodev.mymoneycheckback.operation.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Table(name = "operations")
+@Entity
 public class Operation {
 
-    private final String id;
-    private final String name;
-    private final String description;
-    private final Float amount;
-    private final LocalDate date;
+    @Id
+    private String id;
+    private String name;
+    private String description;
+    private Float amount;
+    private LocalDate date;
+
+    private String accountId;
+    private String userId;
+
+    public Operation() {
+    }
 
     public Operation(String id, String name, String description, Float amount, LocalDate date) {
         this.id = id;
@@ -18,6 +30,10 @@ public class Operation {
         this.date = date;
     }
 
+    public void setAccountId(String accountId) { this.accountId = accountId; }
+
+    public void setUserId(String userId) { this.userId = userId; }
+
     public String getId() {
         return id;
     }
@@ -26,9 +42,7 @@ public class Operation {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescription() { return description; }
 
     public Float getAmount() {
         return amount;
@@ -36,5 +50,11 @@ public class Operation {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public String getUserId() { return userId; }
+
+    public String getAccountId() {
+        return accountId;
     }
 }
