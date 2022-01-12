@@ -1,6 +1,5 @@
 package com.castedodev.mymoneycheckback.tag.application;
 
-import com.castedodev.mymoneycheckback.tag.application.ports.out.SaveTagPort;
 import com.castedodev.mymoneycheckback.tag.domain.Tag;
 import com.castedodev.mymoneycheckback.tag.domain.TagRepository;
 import com.castedodev.mymoneycheckback.user.application.services.FindUserService;

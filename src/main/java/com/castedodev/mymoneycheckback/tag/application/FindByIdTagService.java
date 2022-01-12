@@ -1,6 +1,5 @@
 package com.castedodev.mymoneycheckback.tag.application;
 
-import com.castedodev.mymoneycheckback.tag.application.ports.out.FindTagByIdPort;
 import com.castedodev.mymoneycheckback.tag.domain.Tag;
 import com.castedodev.mymoneycheckback.tag.domain.TagRepository;
 import org.springframework.stereotype.Service;
