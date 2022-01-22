@@ -19,12 +19,19 @@ public class JwtTokenUtil implements Serializable {
 
 	private static final long serialVersionUID = -2550185165626007488L;
 	
-	public static final long JWT_TOKEN_VALIDITY = 5*60*60;
+	public static final long JWT_TOKEN_VALIDITY = 30*24*60*60;
 
 	@Value("${jwt.secret}")
 	private String secret;
 
 	public String getUsernameFromToken(String token) {
+
+		if(token.startsWith("Bearer ")){
+			token = token.substring(7);
+		} else {
+			System.out.println("JWT Token does not begin with Bearer String");
+		}
+
 		return getClaimFromToken(token, Claims::getSubject);
 	}
 
@@ -62,8 +69,12 @@ public class JwtTokenUtil implements Serializable {
 
 	private String doGenerateToken(Map<String, Object> claims, String subject) {
 
-		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY*1000)).signWith(SignatureAlgorithm.HS512, secret).compact();
+		return Jwts.builder()
+				.setClaims(claims)
+				.setSubject(subject)
+				.setIssuedAt(new Date(System.currentTimeMillis()))
+				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY*1000))
+				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 
 	public Boolean canTokenBeRefreshed(String token) {
@@ -72,6 +83,9 @@ public class JwtTokenUtil implements Serializable {
 
 	public Boolean validateToken(String token, UserDetails userDetails) {
 		final String username = getUsernameFromToken(token);
+		if(token.startsWith("Bearer ")){
+			token = token.substring(7);
+		}
 		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
 	}
 }
